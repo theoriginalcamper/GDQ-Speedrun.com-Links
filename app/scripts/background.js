@@ -17,6 +17,7 @@ chrome.runtime.onConnect.addListener(function(port) {
         if (current_game != resp.game) {
           console.log("The Current Game being run is:")
           console.log(resp.game);
+          
           current_game = resp.game;
           getSpeedrunData(current_game, port);
           console.log(current_link);
@@ -27,8 +28,6 @@ chrome.runtime.onConnect.addListener(function(port) {
   });
 });
 
-
-var current_game = null;
 function getSpeedrunData(game, port) {
   $.getJSON("http://www.speedrun.com/api/v1/games?name=" + game).done(function(resp) {
     console.log("Completed request to Speedrun.com");
@@ -36,6 +35,7 @@ function getSpeedrunData(game, port) {
     current_link = resp.data[0].weblink;
     console.log("Retrieved link is:")
     console.log(current_link);
+
     port.postMessage({status: "changed", game: current_game, link: current_link});
   })
 }
