@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "GDQ Speedrun.com Links",
+    "description": "The name of the application"
+  },
+  "appDescription": {
+    "message": "Places a link to speedrun.com for the current game below the stream",
+    "description": "The description of the application"
+  }
+}
